@@ -1,0 +1,17 @@
+$light-purple: rgb(101, 63, 140);
+
+.list {
+  margin-bottom: 25px;
+
+  @media (max-width: 800px) {
+    margin-bottom: 20px;
+  }
+}
+
+.text {
+  color: $light-purple;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+}

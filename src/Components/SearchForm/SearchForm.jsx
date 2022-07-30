@@ -1,25 +1,30 @@
 import React, { memo } from "react";
 import classes from "./SearchForm.module.scss";
 
-function SearchForm({ filter, setFilter }) {
-  const options = [
-    { value: "name", name: "Sort by name" },
-    { value: "id", name: "Sort by date" },
-  ];
+const options = [
+  { value: "name", name: "Sort by name" },
+  { value: "id", name: "Sort by date" },
+];
+
+function SearchForm({ handleChangeFilter, handleChangeSort }) {
   return (
     <form className={classes.search__block}>
       <div className={classes.search__select_wrap}>
         <select
+          defaultValue="default"
           className={classes.search__select}
-          value={filter.sort}
-          onChange={(e) => setFilter({ ...filter, sort: e.target.value })}
+          onChange={handleChangeSort}
         >
-          <option disabled value="" className={classes.search__option}>
+          <option disabled value="default" className={classes.search__option}>
             Sort by
           </option>
-          {options.map((option, index) => (
-            <option className={classes.search__option} key={index} value={option.value}>
-              {option.name}
+          {options.map(({ name, value }) => (
+            <option
+              className={classes.search__option}
+              key={value}
+              value={value}
+            >
+              {name}
             </option>
           ))}
         </select>
@@ -28,11 +33,10 @@ function SearchForm({ filter, setFilter }) {
         className={classes.search__input}
         type="text"
         placeholder="Searching for.."
-        value={filter.query}
-        onChange={(e) => setFilter({ ...filter, query: e.target.value })}
+        onChange={handleChangeFilter}
       />
     </form>
   );
 }
 
-export default memo(SearchForm)
+export default memo(SearchForm);

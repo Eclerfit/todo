@@ -1,45 +1,57 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+import { nanoid } from "nanoid";
 import classes from "./TaskInput.module.scss";
 
-export default function TaskInput({
-  newTask,
-  setNewTask,
-  tasks,
-  setTasks,
-  randomID,
-}) {
-  const [inputError, setInputError] = useState("");
-  const createNewTask = (e) => {
-    setNewTask({ ...newTask, name: e.target.value });
-    !newTask.name ? setInputError("Fill the field") : setInputError("");
+const initialTask = {
+  name: "",
+};
+
+export default function TaskInput({ handleCreateTask }) {
+  const [form, setForm] = useState(initialTask);
+  const [isError, setError] = useState(false);
+
+  const handleChangeName = ({ target: { value } }) => {
+    setError(false);
+
+    setForm((prev) => ({
+      ...prev,
+      name: value,
+    }));
   };
-  const addNewTask = (e) => {
-    e.preventDefault();
-    newTask.name ? setInputError("") : setInputError("Fill the field");
-    newTask.name ? setTasks([...tasks, newTask]) : setTasks([...tasks]);
-    setNewTask({ id: randomID, name: "" });
+
+  const handleCreate = () => {
+    if (form.name) {
+      handleCreateTask({ ...form, id: nanoid() });
+      setForm(initialTask);
+    } else {
+      setError(true);
+    }
   };
+
   return (
     <>
-      {inputError && <div className={classes.error}>{inputError}</div>}
+      {isError && <div className={classes.error}>Fill in the field!</div>}
       <form className={classes.task__block}>
         <input
           className={classes.task__input}
           type="text"
           placeholder="Type the task in"
           name="task"
-          value={newTask.name}
-          onChange={createNewTask}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              setNewTask({ ...newTask, name: e.target.value });
-            }
-          }}
+          value={form.name}
+          onChange={handleChangeName}
+          onKeyDown={({ key }) => key === "Enter" && handleCreate()}
         />
-        <button onClick={addNewTask} className={classes.btn__icon}>
-          <FontAwesomeIcon icon={faSquarePlus} className={classes.btn__icon_add} />
+        <button
+          type="button"
+          onClick={handleCreate}
+          className={classes.btn__icon}
+        >
+          <FontAwesomeIcon
+            icon={faSquarePlus}
+            className={classes.btn__icon_add}
+          />
         </button>
       </form>
     </>
