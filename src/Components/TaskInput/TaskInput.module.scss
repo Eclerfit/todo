@@ -1,0 +1,81 @@
+$white: rgb(226, 220, 231);
+$super-light-purple: rgb(101, 63, 140, 0.2);
+$red: rgba(164, 33, 90, 0.8);
+$light-green: rgba(12, 93, 71, 0.7);
+$green: rgb(8, 76, 58);
+
+.error {
+  color: rgb(189, 14, 14);
+  font-size: 12px;
+  font-weight: 600;
+  align-self: flex-start;
+  position: relative;
+  left: 15%;
+  top: 0;
+  @media (max-width: 600px) { 
+    left: 3%;
+  }
+}
+
+.task__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 5px 0 35px;
+  @media (max-width: 800px) { 
+    width: 80%;
+  }
+  @media (max-width: 600px) { 
+    width: 100%;
+  }
+
+  &::before {
+    content: '';
+    width: 70%;
+    height: 2px;
+    top: 45%;
+    left: 15%;
+    position: absolute;
+    background-color: $white;
+    @media (max-width: 800px) { 
+      width: 80%;
+      left: 10%;
+    }
+    @media (max-width: 600px) { 
+      width: 100%;
+      left: 0%;
+    }
+    @media (max-width: 500px) { 
+      top: 32%;
+    }
+  }
+}
+
+.task__input {
+  background: $super-light-purple;
+  width: 100%;
+  padding: 15px 25px;  
+  outline: none;
+  @media (max-width: 600px) { 
+    padding: 15px;
+  }
+}
+
+.btn__icon {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.4s ease-out;
+}
+
+.btn__icon_add {
+  font-size: 50px;
+  color: $light-green;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+
+  &:hover {
+    color: $green;
+  }
+}

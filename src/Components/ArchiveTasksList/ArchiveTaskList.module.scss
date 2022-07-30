@@ -1,0 +1,70 @@
+$grey: rgba(98, 95, 101, 0.248);
+$red: rgba(164, 33, 90, 0.8);
+$light-purple: rgb(101, 63, 140, 0.8);
+
+.task__block {
+  display: flex;
+  flex-flow: column;
+}
+
+.none {
+  display: none;
+}
+
+.task__wrap {  
+  font-weight: 400;  
+  font-size: 20px;  
+  background-color: $grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;  
+  padding: 20px;
+  margin-bottom: 15px;
+  @media (max-width: 600px) { 
+    font-size: 18px;
+    padding: 15px;
+  }
+}
+
+.task__item {
+  text-decoration: line-through;
+  overflow-x: hidden;
+  max-width: 85%;
+  border: none;
+}
+
+.btn__icon {
+  font-size: 20px;
+  background-color: transparent;
+  align-self: end;
+  margin: 0 15px;
+  cursor: pointer;  
+  transition: all 0.4s ease-out;  
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.btn__icon_del_all {
+  font-size: 25px;
+  color: $red;
+  margin: 20px 0;
+}
+
+.btn__icon_back {
+  color: $light-purple;
+  transition: all 0.4s ease-out;
+}
+
+.btn__block {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 20px;
+}
+
+.btn__icon_arrow {
+  font-size: 23px;
+  color: $light-purple;
+}
