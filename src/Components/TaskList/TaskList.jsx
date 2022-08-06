@@ -15,7 +15,7 @@ function TaskList({ taskList, archiveTask, editTask }) {
       ))}
     </ul>
   ) : (
-    <div className={classes.text}>Let's create a task</div>
+    <div className={classes.text}>Not found</div>
   );
 }
 

@@ -5,8 +5,10 @@ import {
   faAnglesDown,
   faAnglesUp,
 } from "@fortawesome/free-solid-svg-icons";
-import classes from "./ArchiveTaskList.module.scss";
 import Task from "../Task";
+
+import classes from "./ArchiveTaskList.module.scss";
+import { joinClasses } from "../../helpers";
 
 function ArchiveTaskList({ taskList, returnTask, deleteAll, deleteTask }) {
   const [isMore, setMore] = useState(false);
@@ -14,16 +16,18 @@ function ArchiveTaskList({ taskList, returnTask, deleteAll, deleteTask }) {
   const taskListToShow = isMore ? taskList : [taskList[0]];
 
   return taskList.length ? (
-    <div className={taskList.length ? classes.task__block : classes.none}>
+    <div className={classes.wrap}>
       {taskList.length > 1 && (
-        <button className={classes.btn__icon} onClick={deleteAll}>
+        <button
+          className={joinClasses(classes.icon, classes.del)}
+          onClick={deleteAll}
+        >
           <FontAwesomeIcon
             icon={faTrashCan}
-            className={classes.btn__icon_del_all}
           />
         </button>
       )}
-      <ul className={classes.task__list}>
+      <ul className={classes.list}>
         {taskListToShow.map((task) => (
           <Task
             key={task.id}
@@ -35,14 +39,13 @@ function ArchiveTaskList({ taskList, returnTask, deleteAll, deleteTask }) {
         ))}
       </ul>
       {taskList.length > 1 && (
-        <div className={classes.btn__block}>
+        <div className={classes.actions}>
           <button
-            className={classes.btn__icon}
+            className={joinClasses(classes.icon, classes.arrow)}
             onClick={() => setMore((prev) => !prev)}
           >
             <FontAwesomeIcon
               icon={isMore ? faAnglesUp : faAnglesDown}
-              className={classes.btn__icon_arrow}
             />
           </button>
         </div>

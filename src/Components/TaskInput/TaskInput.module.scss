@@ -1,11 +1,7 @@
-$white: rgb(226, 220, 231);
-$super-light-purple: rgb(101, 63, 140, 0.2);
-$red: rgba(164, 33, 90, 0.8);
-$light-green: rgba(12, 93, 71, 0.7);
-$green: rgb(8, 76, 58);
+@import '../../helpers/variables.scss';
 
 .error {
-  color: rgb(189, 14, 14);
+  color: $red;
   font-size: 12px;
   font-weight: 600;
   align-self: flex-start;
@@ -17,7 +13,7 @@ $green: rgb(8, 76, 58);
   }
 }
 
-.task__block {
+.wrap {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,7 +48,7 @@ $green: rgb(8, 76, 58);
   }
 }
 
-.task__input {
+.input {
   background: $super-light-purple;
   width: 100%;
   padding: 15px 25px;  
@@ -62,20 +58,17 @@ $green: rgb(8, 76, 58);
   }
 }
 
-.btn__icon {
-  font-size: 20px;
+.icon {
   cursor: pointer;
   background-color: transparent;
   transition: all 0.4s ease-out;
-}
-
-.btn__icon_add {
-  font-size: 50px;
-  color: $light-green;
-  cursor: pointer;
-  transition: all 0.4s ease-out;
-
-  &:hover {
-    color: $green;
+  display: flex;
+  align-items: center;
+  &.add {
+    font-size: 50px;
+    color: $light-green;
+    &:hover {
+      color: $green;
+    }
   }
 }

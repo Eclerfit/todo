@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 import { nanoid } from "nanoid";
+
 import classes from "./TaskInput.module.scss";
+import { joinClasses } from "../../helpers";
 
 const initialTask = {
   name: "",
@@ -33,9 +35,9 @@ export default function TaskInput({ handleCreateTask }) {
   return (
     <>
       {isError && <div className={classes.error}>Fill in the field!</div>}
-      <form className={classes.task__block}>
+      <form className={classes.wrap}>
         <input
-          className={classes.task__input}
+          className={classes.input}
           type="text"
           placeholder="Type the task in"
           name="task"
@@ -46,12 +48,9 @@ export default function TaskInput({ handleCreateTask }) {
         <button
           type="button"
           onClick={handleCreate}
-          className={classes.btn__icon}
+          className={joinClasses(classes.icon, classes.add)}
         >
-          <FontAwesomeIcon
-            icon={faSquarePlus}
-            className={classes.btn__icon_add}
-          />
+          <FontAwesomeIcon icon={faSquarePlus} />
         </button>
       </form>
     </>

@@ -1,8 +1,4 @@
-$super-light-purple: rgb(101, 63, 140, 0.2);
-$light-green: rgba(12, 93, 71, 0.7);
-$red: rgba(164, 33, 90, 0.8);
-$grey: rgba(98, 95, 101, 0.248);
-$light-purple: rgb(101, 63, 140, 0.8);
+@import '../../helpers/variables.scss';
 
 .task {
   font-size: 20px;
@@ -15,21 +11,20 @@ $light-purple: rgb(101, 63, 140, 0.8);
   margin-bottom: 15px;
   max-width: 100%;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   &Done {
     background-color: $grey;
 
-    .name {
-      text-decoration: line-through;
-    }
+  .name {
+    text-decoration: line-through;
   }
-
+}
   @media (max-width: 600px) {
     font-size: 18px;
     padding: 15px;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
   }
 }
 
@@ -49,27 +44,22 @@ $light-purple: rgb(101, 63, 140, 0.8);
   margin: 0 15px;
   cursor: pointer;
   transition: all 0.4s ease-out;
-
   &:hover {
     transform: scale(1.2);
   }
-
-  &.delete {
+  &.del {
     color: $red;
   }
-}
-
-.icon_edit {
-  color: $light-green;
-}
-
-.icon_del {
-  color: $red;
-}
-
-.back {
-  color: $light-purple;
-  transition: all 0.4s ease-out;
+  &.edit {
+    color: $light-green;
+  }
+  &.back {
+    color: $light-purple;
+    transition: all 0.4s ease-out;
+  }
+  &.check {
+    color: $light-purple;
+  }
 }
 
 .textarea {
@@ -78,7 +68,7 @@ $light-purple: rgb(101, 63, 140, 0.8);
   left: 0;
   width: 100%;
   height: 100%;
-  background: none;
+  background-color: $light-grey;
   width: 100%;
   font: inherit;
   resize: none;

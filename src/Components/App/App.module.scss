@@ -1,4 +1,4 @@
-.wrap__todo {
+.wrapTodo {
   width: 60%;
 
   @media (max-width: 1100px) {
@@ -29,7 +29,7 @@
   }
 }
 
-.wrap__inputs {
+.wrapInputs {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,6 +38,6 @@
 }
 
 .done {
-  padding-top: 25px;
+  padding-top: 15px;
   border-top: 1px solid #000;
 }

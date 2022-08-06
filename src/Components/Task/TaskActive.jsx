@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faEdit, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./Task.module.scss";
+import { joinClasses } from "../../helpers";
 
 export default function TaskActive({ task, archiveTask, editTask }) {
   const [isEditable, setEditable] = useState(false);
@@ -11,7 +12,6 @@ export default function TaskActive({ task, archiveTask, editTask }) {
   const handleDeleteTask = () => archiveTask(task);
   const handleEditTask = () => {
     setEditable(false);
-
     editTask(form);
   };
 
@@ -27,10 +27,11 @@ export default function TaskActive({ task, archiveTask, editTask }) {
         {isEditable ? (
           <div className={classes.textareaWrapper} data-text={task.name}>
             <textarea
-              rows={2}
+              rows={1}
               value={form.name}
               className={classes.textarea}
               onChange={handleChangeName}
+              onBlur={handleEditTask}
             />
           </div>
         ) : (
@@ -39,16 +40,16 @@ export default function TaskActive({ task, archiveTask, editTask }) {
       </div>
       <div className={classes.actions}>
         {isEditable ? (
-          <button className={classes.icon} onClick={handleEditTask}>
-            success
+          <button className={joinClasses(classes.icon, classes.check)} onClick={handleEditTask}>
+            <FontAwesomeIcon icon={faCircleCheck} />
           </button>
         ) : (
-          <button className={classes.icon} onClick={handleToggleEdit}>
-            <FontAwesomeIcon icon={faEdit} className={classes.icon_edit} />
+          <button className={joinClasses(classes.icon, classes.edit)} onClick={handleToggleEdit}>
+            <FontAwesomeIcon icon={faEdit} />
           </button>
         )}
-        <button className={classes.icon} onClick={handleDeleteTask}>
-          <FontAwesomeIcon icon={faTrash} className={classes.icon_del} />
+        <button className={joinClasses(classes.icon, classes.del)} onClick={handleDeleteTask}>
+          <FontAwesomeIcon icon={faTrash} />
         </button>
       </div>
     </>

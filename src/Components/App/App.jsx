@@ -55,10 +55,10 @@ function App() {
   useLocalStorage(taskList, doneTaskList);
 
   return (
-    <div className={classes.wrap__todo}>
+    <div className={classes.wrapTodo}>
       <div className={classes.todo}>
         <Title />
-        <div className={classes.wrap__inputs}>
+        <div className={classes.wrapInputs}>
           <TaskInput handleCreateTask={handleCreateTask} />
           <SearchForm
             handleChangeFilter={handleChangeFilter}

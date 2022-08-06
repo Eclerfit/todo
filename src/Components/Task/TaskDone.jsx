@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./Task.module.scss";
 import { joinClasses } from "../../helpers";
@@ -16,16 +16,15 @@ export default function TaskDone({ task, returnTask, deleteTask }) {
       </div>
       <div className={classes.actions}>
         <button
-          className={joinClasses(classes.icon, classes.delete)}
+          className={joinClasses(classes.icon, classes.del)}
           onClick={handleDelete}
         >
           <FontAwesomeIcon
-            icon={faTrashCan}
-            className={classes.btn__icon_del_all}
+            icon={faTrash}
           />
         </button>
-        <button className={classes.icon} onClick={handleReturn}>
-          <FontAwesomeIcon icon={faArrowUp} className={classes.back} />
+        <button className={joinClasses(classes.icon, classes.back)} onClick={handleReturn}>
+          <FontAwesomeIcon icon={faArrowUp} />
         </button>
       </div>
     </>

@@ -1,8 +1,6 @@
-$white: rgb(226, 220, 231);
-$grey: rgba(133, 118, 148, 0.337); 
-$purple: rgb(101, 63, 140, .9);
+@import '../../helpers/variables.scss';
 
-.search__block {
+.wrap {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -21,7 +19,7 @@ $purple: rgb(101, 63, 140, .9);
   }
 }
 
-.search__select_wrap {
+.selectWrap {
   padding: 0 10px;
   background: $white;
   @media (max-width: 500px) { 
@@ -30,7 +28,7 @@ $purple: rgb(101, 63, 140, .9);
   }
 }
 
-.search__select {
+.select {
   font-weight: 600;
   background: $white;
   color: $purple;
@@ -42,13 +40,13 @@ $purple: rgb(101, 63, 140, .9);
   }
 }
 
-.search__option {
+.option {
   background-color: $white;  
   padding: 20px;
   text-align: center;
 }
 
-.search__input {  
+.input {  
   background: $grey;  
   width: 100%;  
   padding: 15px 25px;

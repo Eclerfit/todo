@@ -8,19 +8,19 @@ const options = [
 
 function SearchForm({ handleChangeFilter, handleChangeSort }) {
   return (
-    <form className={classes.search__block}>
-      <div className={classes.search__select_wrap}>
+    <form className={classes.wrap}>
+      <div className={classes.selectWrap}>
         <select
           defaultValue="default"
-          className={classes.search__select}
+          className={classes.select}
           onChange={handleChangeSort}
         >
-          <option disabled value="default" className={classes.search__option}>
+          <option disabled value="default" className={classes.option}>
             Sort by
           </option>
           {options.map(({ name, value }) => (
             <option
-              className={classes.search__option}
+              className={classes.option}
               key={value}
               value={value}
             >
@@ -30,7 +30,7 @@ function SearchForm({ handleChangeFilter, handleChangeSort }) {
         </select>
       </div>
       <input
-        className={classes.search__input}
+        className={classes.input}
         type="text"
         placeholder="Searching for.."
         onChange={handleChangeFilter}
