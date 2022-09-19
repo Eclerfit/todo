@@ -1,3 +1,4 @@
+TODO LIST:
 - Functional components React, localStorage
 - HTML5+SCSS
 - Creating, deleting, editing and moving a task
